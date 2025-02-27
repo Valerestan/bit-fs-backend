@@ -3,7 +3,7 @@ import express from "express";
 const ruta = express.Router();
 
 ruta.post("/", (solicitud, respuesta) => {
-  console, log("crear");
+  respuesta.send("crear");
 });
 ruta.get("/", (solicitud, respuesta) => {
   respuesta.send("leer todos");
@@ -17,3 +17,5 @@ ruta.put("/:id", (solicitud, respuesta) => {
 ruta.delete("/:id", (solicitud, respuesta) => {
   respuesta.send("eliminar");
 });
+
+export default ruta;
