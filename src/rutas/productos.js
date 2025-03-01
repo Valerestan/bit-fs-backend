@@ -1,21 +1,13 @@
 import express from "express";
+import ProductosController from "../controladores/productos.js";
 
 const ruta = express.Router();
 
-ruta.post("/", (solicitud, respuesta) => {
-  respuesta.send("crear");
-});
-ruta.get("/", (solicitud, respuesta) => {
-  respuesta.send("leer todos");
-});
-ruta.get("/: id", (solicitud, respuesta) => {
-  respuesta.send("leer uno");
-});
-ruta.put("/:id", (solicitud, respuesta) => {
-  respuesta.send("actualizar");
-});
-ruta.delete("/:id", (solicitud, respuesta) => {
-  respuesta.send("eliminar");
-});
+// CRUD
+ruta.post("/", ProductosController.crear);
+ruta.get("/", ProductosController.leerTodos);
+ruta.get("/:id", ProductosController.leerUno);
+ruta.put("/:id", ProductosController.actualizar);
+ruta.delete("/:id", ProductosController.eliminar);
 
 export default ruta;

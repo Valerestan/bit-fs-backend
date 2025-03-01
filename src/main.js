@@ -1,8 +1,16 @@
+import "dotenv/config";
+import ConexionMongodb from "./conexiones/basededatos.js";
 import servidor from "./server.js";
-import morgan from "morgan";
 
-const puerto = 3000;
+const puerto = process.env.PORT;
 
-servidor.use(morgan("dev"))
-servidor.listen(puerto);
-console.log("servidor escucha por el puerto:" + puerto);
+let mensaje = null;
+
+try {
+  servidor.listen(puerto);
+  mensaje = `Servidor escuchando por el puerto: ${puerto}`;
+} catch (error) {
+  mensaje = `Ocurrió un error, el servidor no está corriendo.\nError: ${error}`;
+} finally {
+  console.log(mensaje);
+}
