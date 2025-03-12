@@ -9,7 +9,7 @@ const productoSchema = new mongoose.Schema(
     categoria: {
       type: String,
       required: true,
-      enum: ["productos", "tendencias", "coleccion"],
+      enum: ["home", "productos", "tendencias", "coleccion"],
       default: "productos",
     },
   },
