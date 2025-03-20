@@ -78,7 +78,8 @@ usuariosController.Actualizar = function (request, response) {
     if (ex.posicion == -1) {
       response.json({
         state: false,
-        mensaje: "No podemos actualizar un email qu existe en la base de datos",
+        mensaje:
+          "No podemos actualizar un email que no existe en la base de datos",
       });
       return false;
     } else {
@@ -88,6 +89,51 @@ usuariosController.Actualizar = function (request, response) {
           response.json({
             state: true,
             mensaje: "Usuario actualizadp correctamente",
+          });
+          return false;
+        }
+      });
+    }
+  });
+};
+
+usuariosController.Borrar = function (request, response) {
+  var post = {
+    nombre: request.body.nombre,
+    email: request.body.email,
+  };
+
+  if (post.nombre == undefined || post.nombre == null || post.nombre == "") {
+    response.json({
+      state: false,
+      mensaje: "El campo de nombre es obligatorio",
+    });
+    return false;
+  }
+
+  if (post.email == undefined || post.email == null || post.email == "") {
+    response.json({
+      state: false,
+      mensaje: "El campo de email es obligatorio",
+    });
+    return false;
+  }
+
+  usuariosModel.Existe(post, function (ex) {
+    if (ex.posicion == -1) {
+      response.json({
+        state: false,
+        mensaje:
+          "No podemos eliminar un email que no existe en la base de datos",
+      });
+      return false;
+    } else {
+      post.posicion = ex.posicion;
+      usuariosModel.Borrar(post, function (respuesta) {
+        if (respuesta.state == true) {
+          response.json({
+            state: true,
+            mensaje: "Usuario elimiando correctamente",
           });
           return false;
         }

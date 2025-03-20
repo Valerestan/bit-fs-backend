@@ -18,7 +18,3 @@ app.post("/usarios/borrar", function (request, response) {
 app.get("/usuarios/ListarTodos", function (request, response) {
   usuariosController.ListarTodos(request, response);
 });
-
-
-
-

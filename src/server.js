@@ -16,4 +16,3 @@ servidor.get("/", (solcitud, respuesta) => {
 });
 
 export default servidor;
-
