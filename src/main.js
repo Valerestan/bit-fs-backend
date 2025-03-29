@@ -1,6 +1,6 @@
 import "dotenv/config";
-import ConexionMongodb from "./conexiones/basededatos.js";
-import servidor from "./server.js";
+import ConexionMongodb from "./productos/conexiones/basededatos.js";
+import servidor from "./productos/server.js";
 
 const puerto = process.env.PORT;
 

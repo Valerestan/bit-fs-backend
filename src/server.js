@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
-import rutasProductos from "./rutas/productos.js";
+import rutasProductos from "./productos/rutas/productos.js";
 
 const servidor = express();
 
